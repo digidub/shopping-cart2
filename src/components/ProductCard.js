@@ -8,17 +8,19 @@ const ProductCard = (props) => {
 
   return (
     <Card>
-      <div className='product-image'>
+      <ImageContainer>
         <Image src={image} alt={altText} />
-      </div>
+      </ImageContainer>
       <ProductInfo>
-        <div className='product-name'>{name}</div>
+        <ProductName>{name}</ProductName>
         <div className='product-price' ref={priceRef}>
           £{price}
         </div>
       </ProductInfo>
-      <input type='number' min='1' defaultValue={1} ref={itemRef} />
-      <AddToCart type='submit' value='Add to Cart' />
+      <CartController>
+        <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
+        <AddToCart type='submit' value='Add to Cart' />
+      </CartController>
     </Card>
   );
 };
@@ -32,13 +34,35 @@ const Card = styled.div`
   flex-direction: column;
 `;
 
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const Image = styled.img`
-  max-width: 100%;
+  max-width: 95%;
   height: 200px;
 `;
 
 const ProductInfo = styled.div`
   margin-top: auto;
+`;
+
+const ProductName = styled.div`
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
+const CartController = styled.div`
+  display: flex;
+  flex-align: row;
+`;
+
+const Quantity = styled.input`
+  width: 25px;
 `;
 
 const AddToCart = styled.input`
