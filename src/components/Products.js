@@ -27,7 +27,6 @@ const Products = () => {
 export default Products;
 
 const Display = styled.div`
-  background: grey;
   display: flex;
   flex-wrap: wrap;
 `;
