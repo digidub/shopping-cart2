@@ -1,8 +1,8 @@
 import { Fragment, useReducer } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { checkIfItemInCart, deleteItemLookup, removeQuantityFromBasket } from '../../shopping-cart/src/components/AppLogic';
-import { CartContext } from '../../shopping-cart/src/components/CartContext';
 import Cart from './components/Cart';
+import { CartContext } from './components/CartContext';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import ProductPage from './components/ProductPage';
