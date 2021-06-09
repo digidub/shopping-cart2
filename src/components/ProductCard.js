@@ -1,15 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { CartContext } from './CartContext';
 
 const ProductCard = (props) => {
   const itemRef = useRef();
   const priceRef = useRef();
-  const { image, altText, name, price } = props;
+  const { id, image, altText, name, price } = props;
+  const { dispatch } = useContext(CartContext);
 
   return (
     <Card>
       <ImageContainer>
-        <Image src={image} alt={altText} />
+        <Link to={{ pathname: `/products/${id}`, state: { name } }}>
+          <Image src={image} alt={altText} />
+        </Link>
       </ImageContainer>
       <ProductInfo>
         <ProductName>{name}</ProductName>
@@ -19,7 +24,24 @@ const ProductCard = (props) => {
       </ProductInfo>
       <CartController>
         <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
-        <AddToCart type='submit' value='Add to Cart' />
+        <AddToCart
+          type='submit'
+          value='Add to Cart'
+          onClick={() => {
+            dispatch({
+              type: 'increment',
+              quantity: parseInt(itemRef.current.value),
+              cost: parseFloat(props.price),
+              item: {
+                id: props.id,
+                name: props.name,
+                image: props.image,
+                price: props.price,
+                quantity: parseInt(itemRef.current.value),
+              },
+            });
+          }}
+        />
       </CartController>
     </Card>
   );
@@ -59,6 +81,7 @@ const ProductName = styled.div`
 const CartController = styled.div`
   display: flex;
   flex-align: row;
+  justify-content: center;
 `;
 
 const Quantity = styled.input`
