@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import CartNavDisplay from './CartNavDisplay';
 
 const Navbar = () => {
   return (
@@ -11,7 +12,9 @@ const Navbar = () => {
         <NavLink to='/products'>Products</NavLink>
       </li>
       <li>
-        <NavLink to='/cart'>View Cart</NavLink>
+        <NavLink to='/cart'>
+          <CartNavDisplay />
+        </NavLink>
       </li>
     </ul>
   );
