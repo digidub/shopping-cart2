@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
+import cartIcon from '../assets/cart.svg';
 
 const CartNavDisplay = () => {
   const { state } = useContext(CartContext);
