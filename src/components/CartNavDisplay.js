@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../../shopping-cart/src/components/CartContext';
+import { CartContext } from './CartContext';
 
 const CartNavDisplay = () => {
   const { state } = useContext(CartContext);
