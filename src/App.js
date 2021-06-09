@@ -1,12 +1,14 @@
-import { Fragment, useContext, useState } from 'react';
+import { createContext, Fragment, useContext, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Cart from './components/Cart';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import ProductPage from './components/ProductPage';
 import Products from './components/Products';
 
+export const StoreDataContext = createContext();
+
 function App() {
-  const DataContext = useContext();
   const [storeData, setStoreData] = useState({
     loading: true,
     error: false,
@@ -16,7 +18,7 @@ function App() {
   return (
     <Fragment>
       <BrowserRouter>
-        <DataContext.Provider value={{ storeData, setStoreData }}>
+        <StoreDataContext.Provider value={{ storeData, setStoreData }}>
           <Navbar />
           <Switch>
             <Route exact path='/'>
@@ -28,8 +30,11 @@ function App() {
             <Route exact path='/cart'>
               <Cart />
             </Route>
+            <Route path='/products/:id'>
+              <ProductPage />
+            </Route>
           </Switch>
-        </DataContext.Provider>
+        </StoreDataContext.Provider>
       </BrowserRouter>
     </Fragment>
   );
