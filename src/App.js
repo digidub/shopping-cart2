@@ -1,4 +1,4 @@
-import { Fragment, useContext, useReducer } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Cart from './components/Cart';
 import Home from './components/Home';
@@ -6,8 +6,8 @@ import Navbar from './components/Navbar';
 import Products from './components/Products';
 
 function App() {
-  const dataContext = useContext();
-  const [data, dispatch] = useReducer({
+  const DataContext = useContext();
+  const [storeData, setStoreData] = useState({
     loading: true,
     error: false,
     data: [],
@@ -16,18 +16,20 @@ function App() {
   return (
     <Fragment>
       <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route exact path='/products'>
-            <Products />
-          </Route>
-          <Route exact path='/cart'>
-            <Cart />
-          </Route>
-        </Switch>
+        <DataContext.Provider value={{ storeData, setStoreData }}>
+          <Navbar />
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path='/products'>
+              <Products />
+            </Route>
+            <Route exact path='/cart'>
+              <Cart />
+            </Route>
+          </Switch>
+        </DataContext.Provider>
       </BrowserRouter>
     </Fragment>
   );
