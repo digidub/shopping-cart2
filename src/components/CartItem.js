@@ -14,8 +14,8 @@ const CartItem = (props) => {
       <div className='cart-item-price'>
         <p>£{props.price}</p>
       </div>
-      <div className='cart-item-quantity'>
-        <button
+      <QuantityController>
+        <QuantityButton
           onClick={() => {
             dispatch({
               type: 'decrement',
@@ -32,9 +32,9 @@ const CartItem = (props) => {
           }}
         >
           -
-        </button>
+        </QuantityButton>
         <p>{props.quantity}</p>
-        <button
+        <QuantityButton
           onClick={() => {
             dispatch({
               type: 'increment',
@@ -51,7 +51,7 @@ const CartItem = (props) => {
           }}
         >
           +
-        </button>
+        </QuantityButton>
         <button
           onClick={() => {
             dispatch({
@@ -65,7 +65,7 @@ const CartItem = (props) => {
         >
           delete
         </button>
-      </div>
+      </QuantityController>
     </CartCard>
   );
 };
@@ -76,13 +76,25 @@ const CartCard = styled.div`
   display: grid;
   grid-template-columns: 10% 30% 5% 55%;
   height: 10vh;
-`;
-
-const ImageHolder = styled.div`
-  height: 8vh;
+  margin: 1vh 0 1vh 0;
 `;
 
 const CartImage = styled.img`
   max-height: 100%;
   overflow: hidden;
+`;
+
+const QuantityController = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const QuantityButton = styled.div`
+  height: 50%;
+  background: white;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
 `;
