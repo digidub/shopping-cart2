@@ -5,7 +5,6 @@ import { CartContext } from './CartContext';
 
 const ProductCard = (props) => {
   const itemRef = useRef();
-  const priceRef = useRef();
   const { id, image, altText, name, price } = props;
   const { dispatch } = useContext(CartContext);
 
@@ -18,9 +17,7 @@ const ProductCard = (props) => {
       </ImageContainer>
       <ProductInfo>
         <ProductName>{name}</ProductName>
-        <div className='product-price' ref={priceRef}>
-          £{price}
-        </div>
+        <div className='product-price'>£{price}</div>
       </ProductInfo>
       <CartController>
         <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
