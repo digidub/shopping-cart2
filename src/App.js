@@ -9,7 +9,6 @@ import ProductPage from './components/ProductPage';
 import Products from './components/Products';
 
 const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case 'increment':
       const cartItemsIncrement = checkIfItemInCart(action.item, state.items, 'add');

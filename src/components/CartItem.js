@@ -9,7 +9,6 @@ const CartItem = (props) => {
 
   const handleChange = async (e) => {
     const newQuantity = parseInt(e.target.value);
-    console.log(newQuantity);
     dispatch({
       type: 'custom',
       quantity: newQuantity,
@@ -52,7 +51,7 @@ const CartItem = (props) => {
         >
           -
         </QuantityButton>
-        <Quantity type='number' min='1' value={quantity} ref={itemRef} onChange={handleChange} />
+        <Quantity type='number' min='1' defaultValue={quantity} ref={itemRef} onBlur={handleChange} />
         <QuantityButton
           onClick={() => {
             dispatch({
@@ -119,5 +118,5 @@ const QuantityButton = styled.div`
 `;
 
 const Quantity = styled.input`
-  width: 25px;
+  width: 40px;
 `;
