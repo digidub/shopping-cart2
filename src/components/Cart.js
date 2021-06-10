@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
 import CartItem from './CartItem';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const { state } = useContext(CartContext);
@@ -10,7 +11,17 @@ const Cart = () => {
     return <CartItem key={product.id} id={product.id} image={product.image} name={product.name} price={product.price} quantity={product.quantity} />;
   });
 
-  return <CartDisplay>{cartItems.length ? cartItems : <NoItems>No Items In Cart!</NoItems>}</CartDisplay>;
+  return (
+    <CartDisplay>
+      {cartItems.length ? (
+        cartItems
+      ) : (
+        <NoItems>
+          No Items In Cart! Add <Link to='/products'>products</Link> to proceed.
+        </NoItems>
+      )}
+    </CartDisplay>
+  );
 };
 
 export default Cart;
@@ -18,10 +29,17 @@ export default Cart;
 const CartDisplay = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 5vh;
 `;
 
 const NoItems = styled.div`
+  width: 80vh;
+  height: 60vh;
+  margin: 0 auto;
+  margin-top: 5vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  background-color: lightgrey;
 `;
