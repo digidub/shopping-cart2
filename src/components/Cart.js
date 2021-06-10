@@ -7,14 +7,10 @@ const Cart = () => {
   const { state } = useContext(CartContext);
 
   const cartItems = state.items.map((product) => {
-    return (
-      <CartDisplay>
-        <CartItem key={product.id} id={product.id} image={product.image} name={product.name} price={product.price} quantity={product.quantity} />
-      </CartDisplay>
-    );
+    return <CartItem key={product.id} id={product.id} image={product.image} name={product.name} price={product.price} quantity={product.quantity} />;
   });
 
-  return <div className='cart-container'>{cartItems}</div>;
+  return <CartDisplay>{cartItems}</CartDisplay>;
 };
 
 export default Cart;
