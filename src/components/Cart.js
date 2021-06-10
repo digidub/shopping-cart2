@@ -27,19 +27,20 @@ const Cart = () => {
 export default Cart;
 
 const CartDisplay = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 5vh;
-`;
-
-const NoItems = styled.div`
   width: 80vh;
   height: 60vh;
   margin: 0 auto;
-  margin-top: 5vh;
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: lightgrey;
+`;
+
+const NoItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
