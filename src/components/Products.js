@@ -9,7 +9,16 @@ const Error = (error) => <p>Oops! Something went wrong: {error}</p>;
 
 const Data = ({ products }) =>
   products.map((product) => {
-    return <ProductCard key={product.id} id={product.id} image={product.image} name={product.title} price={product.price}></ProductCard>;
+    return (
+      <ProductCard
+        key={product.id}
+        id={product.id}
+        image={product.image}
+        name={product.title}
+        price={product.price}
+        description={product.description}
+      ></ProductCard>
+    );
   });
 
 const Products = () => {
