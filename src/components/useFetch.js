@@ -16,9 +16,11 @@ const useFetch = () => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         setState({ loading: false, error: false, data });
       })
       .catch((error) => setState({ loading: false, error, data: [] }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return state;
