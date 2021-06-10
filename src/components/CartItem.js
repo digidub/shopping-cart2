@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const CartItem = (props) => {
   const { dispatch } = useContext(CartContext);
+  const { id, name, image, price, quantity } = props;
 
   return (
     <CartCard>
@@ -22,10 +23,10 @@ const CartItem = (props) => {
               quantity: 1,
               cost: parseFloat(props.price),
               item: {
-                id: props.id,
-                name: props.name,
-                image: props.image,
-                price: props.price,
+                id,
+                name,
+                image,
+                price,
                 quantity: 1,
               },
             });
@@ -33,7 +34,7 @@ const CartItem = (props) => {
         >
           -
         </QuantityButton>
-        <p>{props.quantity}</p>
+        <p>{quantity}</p>
         <QuantityButton
           onClick={() => {
             dispatch({
@@ -41,10 +42,10 @@ const CartItem = (props) => {
               quantity: 1,
               cost: parseFloat(props.price),
               item: {
-                id: props.id,
-                name: props.name,
-                image: props.image,
-                price: props.price,
+                id,
+                name,
+                image,
+                price,
                 quantity: 1,
               },
             });
@@ -58,7 +59,7 @@ const CartItem = (props) => {
               type: 'delete',
               cost: parseFloat(props.price),
               item: {
-                id: props.id,
+                id,
               },
             });
           }}
