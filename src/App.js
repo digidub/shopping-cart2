@@ -1,6 +1,6 @@
 import { Fragment, useReducer } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { checkIfItemInCart, deleteItemLookup, removeQuantityFromBasket } from './components/AppLogic';
+import { checkIfItemInCart, customQuantityUpdate, deleteItemLookup, removeQuantityFromBasket } from './components/AppLogic';
 import Cart from './components/Cart';
 import { CartContext } from './components/CartContext';
 import Home from './components/Home';
@@ -9,6 +9,7 @@ import ProductPage from './components/ProductPage';
 import Products from './components/Products';
 
 const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case 'increment':
       const cartItemsIncrement = checkIfItemInCart(action.item, state.items, 'add');
@@ -35,6 +36,29 @@ const reducer = (state, action) => {
         itemCount: state.itemCount - itemsToBeSubtracted,
         costCount: state.costCount - action.cost * itemsToBeSubtracted,
       };
+    case 'custom':
+      const customCart = customQuantityUpdate(action.item, state.items, action.quantity);
+      if (customCart.type === 'add') {
+        return {
+          ...state,
+          items: customCart.array,
+          itemCount: state.itemCount + (customCart.newQuantity - customCart.oldQuantity),
+          costCount: state.costCount + (customCart.newQuantity - customCart.oldQuantity) * action.cost,
+        };
+      } else if (customCart.type === 'subtract') {
+        return {
+          ...state,
+          items: customCart.array,
+          itemCount: state.itemCount - (customCart.oldQuantity - customCart.newQuantity),
+          costCount: state.costCount - (customCart.oldQuantity - customCart.newQuantity) * action.cost,
+        };
+      } else
+        return {
+          ...state,
+          items: customCart.array,
+          itemCount: state.itemCount,
+          costCount: state.costCount,
+        };
     default:
       throw new Error('woops');
   }

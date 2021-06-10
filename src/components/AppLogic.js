@@ -21,3 +21,18 @@ export const removeQuantityFromBasket = (item, array) => {
   const toUpdate = array.find((object) => object.id === item.id);
   return toUpdate.quantity;
 };
+
+export const customQuantityUpdate = (item, array, newQuantity) => {
+  const toUpdate = array.find((object) => object.id === item.id);
+  const oldQuantity = toUpdate.quantity;
+  if (newQuantity > oldQuantity) {
+    toUpdate.quantity = newQuantity;
+    return { array, type: 'add', newQuantity, oldQuantity };
+  } else if (newQuantity < oldQuantity) {
+    toUpdate.quantity = newQuantity;
+    return { array, type: 'subtract', newQuantity, oldQuantity };
+  } else {
+    toUpdate.quantity = newQuantity;
+    return { array, type: '', newQuantity, oldQuantity };
+  }
+};
