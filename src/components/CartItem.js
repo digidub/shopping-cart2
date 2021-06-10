@@ -1,10 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { CartContext } from './CartContext';
 import styled from 'styled-components';
 
 const CartItem = (props) => {
   const { dispatch } = useContext(CartContext);
   const { id, name, image, price, quantity } = props;
+  const itemRef = useRef();
+
+  const handleChange = async (e) => {
+    const newQuantity = parseInt(e.target.value);
+    console.log(newQuantity);
+    dispatch({
+      type: 'custom',
+      quantity: newQuantity,
+      cost: parseFloat(props.price),
+      item: {
+        id,
+        name,
+        image,
+        price,
+        quantity: newQuantity,
+      },
+    });
+  };
 
   return (
     <CartCard>
@@ -34,7 +52,7 @@ const CartItem = (props) => {
         >
           -
         </QuantityButton>
-        <p>{quantity}</p>
+        <Quantity type='number' min='1' value={quantity} ref={itemRef} onChange={handleChange} />
         <QuantityButton
           onClick={() => {
             dispatch({
@@ -98,4 +116,8 @@ const QuantityButton = styled.div`
   color: palevioletred;
   margin: 0 1em;
   padding: 0.25em 1em;
+`;
+
+const Quantity = styled.input`
+  width: 25px;
 `;
