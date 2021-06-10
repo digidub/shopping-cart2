@@ -12,7 +12,7 @@ const ProductCard = (props) => {
   return (
     <Card>
       <ImageContainer>
-        <Link to={{ pathname: `/products/${id}`, state: { name } }}>
+        <Link to={{ pathname: `/products/${id}`, state: { props } }}>
           <Image src={image} alt={altText} />
         </Link>
       </ImageContainer>
