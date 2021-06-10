@@ -1,10 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 
 const ProductPage = (props) => {
   let { id } = useParams();
+  const location = useLocation();
+  const { name } = location.state;
 
-  return <p>Hi I am {id}</p>;
+  return (
+    <p>
+      Hi I am {id}, {name}
+    </p>
+  );
 };
 
 export default ProductPage;
