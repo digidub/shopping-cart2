@@ -7,7 +7,7 @@ const CartTotal = (props) => {
 
   return (
     <p>
-      {itemCount} items (£${costCount.toFixed(2)})
+      TOTAL BEFORE SHIPPING: {itemCount} items (£{costCount.toFixed(2)})
     </p>
   );
 };
