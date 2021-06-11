@@ -92,4 +92,9 @@ const AddToCart = styled.input`
   color: palevioletred;
   margin: 0 1em;
   padding: 0.25em 1em;
+  &:hover {
+    background: palevioletred;
+    color: white;
+    transition: all 0.5s ease;
+  }
 `;
