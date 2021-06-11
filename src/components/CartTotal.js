@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { formatter } from './AppLogic';
 import { CartContext } from './CartContext';
 
 const CartTotal = (props) => {
@@ -7,7 +8,7 @@ const CartTotal = (props) => {
 
   return (
     <p>
-      TOTAL BEFORE SHIPPING: {itemCount} items (£{costCount.toFixed(2)})
+      TOTAL BEFORE SHIPPING: {itemCount} items ({formatter.format(costCount)})
     </p>
   );
 };

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
 import cartIcon from '../assets/cart.svg';
 import styled from 'styled-components';
+import { formatter } from './AppLogic';
 
 const CartNavDisplay = () => {
   const { state } = useContext(CartContext);
@@ -11,7 +12,7 @@ const CartNavDisplay = () => {
     <CartDisplay>
       <img src={cartIcon} alt='cart' />
       <p>
-        {itemCount} items {itemCount ? `(£${costCount.toFixed(2)})` : ''}
+        {itemCount} items {itemCount ? formatter.format(costCount) : ''}
       </p>
     </CartDisplay>
   );

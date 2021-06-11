@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import { CartContext } from './CartContext';
 import styled from 'styled-components';
+import { formatter } from './AppLogic';
 
 const CartItem = (props) => {
   const { dispatch } = useContext(CartContext);
@@ -30,7 +31,7 @@ const CartItem = (props) => {
         <p>{props.name}</p>
       </div>
       <div className='cart-item-price'>
-        <p>£{props.price}</p>
+        <p>{formatter.format(price)}</p>
       </div>
       <QuantityController>
         <QuantityButton
@@ -85,7 +86,7 @@ const CartItem = (props) => {
         </button>
       </QuantityController>
       <div>
-        <p>£{(quantity * price).toFixed(2)}</p>
+        <p>{formatter.format(quantity * price)}</p>
       </div>
     </CartCard>
   );
