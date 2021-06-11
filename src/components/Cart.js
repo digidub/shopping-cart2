@@ -3,6 +3,7 @@ import { CartContext } from './CartContext';
 import CartItem from './CartItem';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import CartTotal from './CartTotal';
 
 const Cart = () => {
   const { state } = useContext(CartContext);
@@ -20,6 +21,7 @@ const Cart = () => {
           No Items In Cart! Add <Link to='/products'>products</Link> to proceed.
         </NoItems>
       )}
+      <CartTotal />
     </CartDisplay>
   );
 };
