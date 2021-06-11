@@ -51,7 +51,7 @@ const CartItem = (props) => {
         >
           -
         </QuantityButton>
-        <Quantity type='number' min='1' defaultValue={quantity} ref={itemRef} onBlur={handleChange} />
+        <Quantity type='number' min='1' value={quantity} ref={itemRef} onChange={handleChange} />
         <QuantityButton
           onClick={() => {
             dispatch({
