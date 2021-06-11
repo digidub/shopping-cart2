@@ -1,5 +1,4 @@
 export const checkIfItemInCart = (item, array, sum) => {
-  console.log(item);
   const index = array.findIndex((object) => object.id === item.id);
   if (index !== -1) {
     const newArray = array.map((item, i) =>
@@ -10,7 +9,7 @@ export const checkIfItemInCart = (item, array, sum) => {
           }
         : item
     );
-    if (!newArray[index]?.quantity) {
+    if (!newArray[index].quantity) {
       return deleteItemLookup(item, newArray);
     }
     return newArray;
