@@ -8,15 +8,15 @@ const Navbar = () => {
     <NavBar>
       <NavLinks>
         <li>
-          <NavLink to='/'>Home</NavLink>
+          <StyledLink to='/'>Home</StyledLink>
         </li>
         <li>
-          <NavLink to='/products'>Products</NavLink>
+          <StyledLink to='/products'>Products</StyledLink>
         </li>
         <li>
-          <NavLink to='/cart'>
+          <StyledLink to='/cart'>
             <CartNavDisplay />
-          </NavLink>
+          </StyledLink>
         </li>
       </NavLinks>
     </NavBar>
@@ -26,7 +26,7 @@ const Navbar = () => {
 export default Navbar;
 
 const NavBar = styled.div`
-  background-color: grey;
+  background-color: #353434;
   position: fixed;
   top: 0;
   width: 100%;
@@ -41,4 +41,16 @@ const NavLinks = styled.ul`
   max-width: 600px;
   margin: 0 auto;
   list-style-type: none;
+`;
+
+const StyledLink = styled(NavLink)`
+  color: white;
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
