@@ -44,3 +44,8 @@ export const customQuantityUpdate = (item, array, newQuantity) => {
     oldQuantity,
   };
 };
+
+export const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'GBP',
+});
