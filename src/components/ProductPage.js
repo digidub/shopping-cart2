@@ -59,7 +59,7 @@ export default ProductPage;
 const ProductDisplay = styled.div`
   width: 80vw;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
 `;

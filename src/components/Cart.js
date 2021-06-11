@@ -32,7 +32,7 @@ const CartDisplay = styled.div`
   width: 80vh;
   height: 60vh;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
