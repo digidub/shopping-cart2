@@ -46,6 +46,7 @@ const NavLinks = styled.ul`
 const StyledLink = styled(NavLink)`
   color: white;
   text-decoration: none;
+  font-weight: 600;
   &:focus,
   &:hover,
   &:visited,
@@ -54,7 +55,7 @@ const StyledLink = styled(NavLink)`
     text-decoration: none;
   }
   &:hover {
-    color: pink;
+    color: palevioletred;
     transition: all 0.5s ease;
   }
 `;
