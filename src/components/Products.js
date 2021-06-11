@@ -38,5 +38,5 @@ export default Products;
 const Display = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 5vh;
+  margin-top: 50px;
 `;
