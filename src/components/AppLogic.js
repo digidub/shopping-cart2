@@ -30,35 +30,17 @@ export const removeQuantityFromBasket = (item, array) => {
 export const customQuantityUpdate = (item, array, newQuantity) => {
   const index = array.findIndex((object) => object.id === item.id);
   const oldQuantity = array[index].quantity;
-  if (newQuantity > oldQuantity) {
-    return {
-      array: array.map((item, i) =>
-        i === index
-          ? {
-              ...item,
-              quantity: newQuantity,
-            }
-          : item
-      ),
-      type: 'add',
-      newQuantity,
-      oldQuantity,
-    };
-  } else if (newQuantity < oldQuantity) {
-    return {
-      array: array.map((item, i) =>
-        i === index
-          ? {
-              ...item,
-              quantity: newQuantity,
-            }
-          : item
-      ),
-      type: 'subtract',
-      newQuantity,
-      oldQuantity,
-    };
-  } else {
-    return { array, type: '', newQuantity, oldQuantity };
-  }
+  return {
+    array: array.map((item, i) =>
+      i === index
+        ? {
+            ...item,
+            quantity: newQuantity,
+          }
+        : item
+    ),
+    type: newQuantity >= oldQuantity ? 'add' : 'subtract',
+    newQuantity,
+    oldQuantity,
+  };
 };
