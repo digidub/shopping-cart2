@@ -57,7 +57,7 @@ const CartItem = (props) => {
             dispatch({
               type: 'increment',
               quantity: 1,
-              cost: parseFloat(props.price),
+              cost: parseFloat(price),
               item: {
                 id,
                 name,
@@ -74,7 +74,7 @@ const CartItem = (props) => {
           onClick={() => {
             dispatch({
               type: 'delete',
-              cost: parseFloat(props.price),
+              cost: parseFloat(price),
               item: {
                 id,
               },
@@ -84,6 +84,9 @@ const CartItem = (props) => {
           delete
         </button>
       </QuantityController>
+      <div>
+        <p>£{(quantity * price).toFixed(2)}</p>
+      </div>
     </CartCard>
   );
 };
@@ -92,7 +95,7 @@ export default CartItem;
 
 const CartCard = styled.div`
   display: grid;
-  grid-template-columns: 10% 30% 5% 55%;
+  grid-template-columns: 10% 30% 10% 35% 10%;
   height: 10vh;
   margin: 1vh 0 1vh 0;
 `;
