@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from './CartContext';
 
 const CartTotal = (props) => {
-  return <p>hi</p>;
+  const { state } = useContext(CartContext);
+  const { itemCount, costCount } = state;
+
+  return (
+    <p>
+      {itemCount} items (£${costCount.toFixed(2)})
+    </p>
+  );
 };
 
 export default CartTotal;
