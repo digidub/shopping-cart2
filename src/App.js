@@ -37,27 +37,24 @@ const reducer = (state, action) => {
       };
     case 'custom':
       const customCart = customQuantityUpdate(action.item, state.items, action.quantity);
-      if (customCart.type === 'add') {
-        return {
-          ...state,
-          items: customCart.array,
-          itemCount: state.itemCount + (customCart.newQuantity - customCart.oldQuantity),
-          costCount: state.costCount + (customCart.newQuantity - customCart.oldQuantity) * action.cost,
-        };
-      } else if (customCart.type === 'subtract') {
-        return {
-          ...state,
-          items: customCart.array,
-          itemCount: state.itemCount - (customCart.oldQuantity - customCart.newQuantity),
-          costCount: state.costCount - (customCart.oldQuantity - customCart.newQuantity) * action.cost,
-        };
-      } else
-        return {
-          ...state,
-          items: customCart.array,
-          itemCount: state.itemCount,
-          costCount: state.costCount,
-        };
+      switch (customCart.type) {
+        case 'add':
+          return {
+            ...state,
+            items: customCart.array,
+            itemCount: state.itemCount + (customCart.newQuantity - customCart.oldQuantity),
+            costCount: state.costCount + (customCart.newQuantity - customCart.oldQuantity) * action.cost,
+          };
+        case 'subtract':
+          return {
+            ...state,
+            items: customCart.array,
+            itemCount: state.itemCount - (customCart.oldQuantity - customCart.newQuantity),
+            costCount: state.costCount - (customCart.oldQuantity - customCart.newQuantity) * action.cost,
+          };
+        default:
+          throw new Error('woops');
+      }
     default:
       throw new Error('woops');
   }
