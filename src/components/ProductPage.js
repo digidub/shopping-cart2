@@ -57,6 +57,9 @@ const ProductPage = () => {
 export default ProductPage;
 
 const ProductDisplay = styled.div`
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 10vh;
   display: flex;
   flex-direction: row;
 `;
