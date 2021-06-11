@@ -53,4 +53,8 @@ const StyledLink = styled(NavLink)`
   &:active {
     text-decoration: none;
   }
+  &:hover {
+    color: pink;
+    transition: all 0.5s ease;
+  }
 `;
