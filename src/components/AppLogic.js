@@ -1,7 +1,7 @@
 export const checkIfItemInCart = (item, array, sum) => {
   console.log(item);
-  const index = array.find((object) => object.id === item.id);
-  if (index !== undefined) {
+  const index = array.findIndex((object) => object.id === item.id);
+  if (index !== -1) {
     const newArray = array.map((item, i) =>
       i === index
         ? {
@@ -18,18 +18,6 @@ export const checkIfItemInCart = (item, array, sum) => {
   return array.concat(item);
 };
 
-//   if (array.find((object) => object.id === item.id)) {
-//     const toUpdate = array.find((object) => object.id === item.id);
-//     if (sum === 'add') toUpdate.quantity = toUpdate.quantity + item.quantity;
-//     else {
-//       toUpdate.quantity = toUpdate.quantity - item.quantity;
-//       if (toUpdate.quantity === 0) array = deleteItemLookup(item, array);
-//     }
-//     return array;
-//   }
-//   return array.concat(item);
-// };
-
 export const deleteItemLookup = (item, array) => {
   const deleted = array.filter((object) => object.id !== item.id);
   return deleted;
@@ -41,16 +29,37 @@ export const removeQuantityFromBasket = (item, array) => {
 };
 
 export const customQuantityUpdate = (item, array, newQuantity) => {
-  const toUpdate = array.find((object) => object.id === item.id);
-  const oldQuantity = toUpdate.quantity;
+  const index = array.findIndex((object) => object.id === item.id);
+  const oldQuantity = array[index].quantity;
   if (newQuantity > oldQuantity) {
-    toUpdate.quantity = newQuantity;
-    return { array, type: 'add', newQuantity, oldQuantity };
+    return {
+      array: array.map((item, i) =>
+        i === index
+          ? {
+              ...item,
+              quantity: newQuantity,
+            }
+          : item
+      ),
+      type: 'add',
+      newQuantity,
+      oldQuantity,
+    };
   } else if (newQuantity < oldQuantity) {
-    toUpdate.quantity = newQuantity;
-    return { array, type: 'subtract', newQuantity, oldQuantity };
+    return {
+      array: array.map((item, i) =>
+        i === index
+          ? {
+              ...item,
+              quantity: newQuantity,
+            }
+          : item
+      ),
+      type: 'subtract',
+      newQuantity,
+      oldQuantity,
+    };
   } else {
-    toUpdate.quantity = newQuantity;
     return { array, type: '', newQuantity, oldQuantity };
   }
 };
