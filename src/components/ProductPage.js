@@ -40,6 +40,7 @@ const ProductPage = () => {
                   item: {
                     id,
                     name,
+                    description,
                     image,
                     price,
                     quantity: parseInt(itemRef.current.value),
