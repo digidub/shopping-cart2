@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ProductCard from './ProductCard';
 import useFetch from './useFetch';
 import styled from 'styled-components';
+import Categories from './Categories';
 
 const Loading = () => <p>Loading...</p>;
 
@@ -25,11 +26,18 @@ const Products = () => {
   const { loading, error, data } = useFetch();
 
   return (
-    <Display>
+    <Fragment>
       {loading && <Loading />}
       {error && <Error error={error} />}
-      {data.length && <Data products={data} />}
-    </Display>
+      {data.length && (
+        <Fragment>
+          <Categories />
+          <Display>
+            <Data products={data} />
+          </Display>
+        </Fragment>
+      )}
+    </Fragment>
   );
 };
 
