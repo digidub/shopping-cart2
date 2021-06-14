@@ -11,15 +11,15 @@ const ProductCard = (props) => {
 
   return (
     <Card>
-      <ImageContainer>
-        <Link to={{ pathname: `/products/${id}`, state: { props } }}>
+      <Link to={{ pathname: `/products/${id}`, state: { props } }}>
+        <ImageContainer>
           <Image src={image} alt={altText} />
-        </Link>
-      </ImageContainer>
-      <ProductInfo>
-        <ProductName>{name}</ProductName>
-        <div className='product-price'>{formatter.format(price)}</div>
-      </ProductInfo>
+        </ImageContainer>
+        <ProductInfo>
+          <ProductName>{name}</ProductName>
+          <div className='product-price'>{formatter.format(price)}</div>
+        </ProductInfo>
+      </Link>
       <CartController>
         <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
         <AddToCart
