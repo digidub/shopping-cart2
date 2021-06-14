@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const CartItem = (props) => {
   const { dispatch } = useContext(CartContext);
-  const { id, name, image, price, quantity } = props;
+  const { id, name, image, price, quantity, description } = props;
   const itemRef = useRef();
 
   const handleChange = async (e) => {
@@ -27,7 +27,7 @@ const CartItem = (props) => {
 
   return (
     <CartCard>
-      <Link to={{ pathname: `/products/${id}`, state: { props } }}>
+      <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
         <CartImage src={props.image} alt='changeme' />
         <div className='cart-item-name'>
           <p>{props.name}</p>
@@ -35,7 +35,7 @@ const CartItem = (props) => {
         <div className='cart-item-price'>
           <p>{formatter.format(price)}</p>
         </div>
-      </Link>
+      </StyledLink>
       <QuantityController>
         <QuantityButton
           onClick={() => {
@@ -126,4 +126,16 @@ const QuantityButton = styled.div`
 
 const Quantity = styled.input`
   width: 40px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
