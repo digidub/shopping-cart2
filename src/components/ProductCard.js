@@ -6,7 +6,7 @@ import { CartContext } from './CartContext';
 
 const ProductCard = (props) => {
   const itemRef = useRef();
-  const { id, image, altText, name, price } = props;
+  const { id, image, altText, name, price, description } = props;
   const { dispatch } = useContext(CartContext);
 
   return (
@@ -29,12 +29,13 @@ const ProductCard = (props) => {
             dispatch({
               type: 'increment',
               quantity: parseInt(itemRef.current.value),
-              cost: parseFloat(props.price),
+              cost: parseFloat(price),
               item: {
-                id: props.id,
-                name: props.name,
-                image: props.image,
-                price: props.price,
+                id,
+                name,
+                description,
+                image,
+                price,
                 quantity: parseInt(itemRef.current.value),
               },
             });
