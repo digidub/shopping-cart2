@@ -11,7 +11,7 @@ const ProductCard = (props) => {
 
   return (
     <Card>
-      <Link to={{ pathname: `/products/${id}`, state: { props } }}>
+      <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
         <ImageContainer>
           <Image src={image} alt={altText} />
         </ImageContainer>
@@ -19,7 +19,7 @@ const ProductCard = (props) => {
           <ProductName>{name}</ProductName>
           <div className='product-price'>{formatter.format(price)}</div>
         </ProductInfo>
-      </Link>
+      </StyledLink>
       <CartController>
         <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
         <AddToCart
@@ -97,5 +97,17 @@ const AddToCart = styled.input`
     background: palevioletred;
     color: white;
     transition: all 0.5s ease;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
   }
 `;
