@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react';
 import { CartContext } from './CartContext';
 import styled from 'styled-components';
 import { formatter } from './AppLogic';
+import { Link } from 'react-router-dom';
 
 const CartItem = (props) => {
   const { dispatch } = useContext(CartContext);
@@ -26,13 +27,15 @@ const CartItem = (props) => {
 
   return (
     <CartCard>
-      <CartImage src={props.image} alt='changeme' />
-      <div className='cart-item-name'>
-        <p>{props.name}</p>
-      </div>
-      <div className='cart-item-price'>
-        <p>{formatter.format(price)}</p>
-      </div>
+      <Link to={{ pathname: `/products/${id}`, state: { props } }}>
+        <CartImage src={props.image} alt='changeme' />
+        <div className='cart-item-name'>
+          <p>{props.name}</p>
+        </div>
+        <div className='cart-item-price'>
+          <p>{formatter.format(price)}</p>
+        </div>
+      </Link>
       <QuantityController>
         <QuantityButton
           onClick={() => {
