@@ -61,7 +61,8 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   height: 200px;
-  margin-bottom: 10px;
+  margin-bottom: auto;
+  margin-top: auto;
 `;
 
 const Image = styled.img`
@@ -71,6 +72,7 @@ const Image = styled.img`
 
 const ProductInfo = styled.div`
   margin-top: auto;
+  color: black;
 `;
 
 const ProductName = styled.div`
@@ -79,10 +81,12 @@ const ProductName = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 0.8rem;
 `;
 
 const ProductPrice = styled.div`
   text-align: center;
+  margin: 0.8rem;
 `;
 
 const CartController = styled.div`
@@ -114,8 +118,10 @@ const AddToCart = styled.input`
 `;
 
 const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
-  margin-top: auto;
+  margin-bottom: auto;
   &:focus,
   &:hover,
   &:visited,
