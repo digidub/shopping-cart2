@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import ProductPage from './components/ProductPage';
 import Products from './components/Products';
 import { Reset } from 'styled-reset';
+import GlobalStyle from './components/GlobalStyles';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -71,6 +72,7 @@ function App() {
   return (
     <Fragment>
       <Reset />
+      <GlobalStyle />
       <BrowserRouter>
         <CartContext.Provider value={{ state, dispatch }}>
           <Navbar />
