@@ -73,16 +73,27 @@ const CartController = styled.div`
 const Quantity = styled.input`
   width: 40px;
   background: white;
-  border-radius: 3px;
+  border: 5px solid #1c6ea4;
+  border-radius: 9px 0px 0px 9px;
   border: 2px solid palevioletred;
+  border-right: 0px;
   color: palevioletred;
+  display: inline-block;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const AddToCart = styled.input`
+  display: inline-block;
   background: white;
-  border-radius: 3px;
+  border-radius: 0px 9px 9px 0px;
   border: 2px solid palevioletred;
   color: palevioletred;
-  margin: 0 1em;
   padding: 0.25em 1em;
+  &:hover {
+    background: palevioletred;
+    color: white;
+    transition: all 0.5s ease;
+  }
 `;
