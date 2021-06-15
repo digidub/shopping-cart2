@@ -17,7 +17,7 @@ const ProductCard = (props) => {
         </ImageContainer>
         <ProductInfo>
           <ProductName>{name}</ProductName>
-          <div className='product-price'>{formatter.format(price)}</div>
+          <ProductPrice>{formatter.format(price)}</ProductPrice>
         </ProductInfo>
       </StyledLink>
       <CartController>
@@ -49,20 +49,24 @@ const ProductCard = (props) => {
 export default ProductCard;
 
 const Card = styled.div`
-  flex: 1 16%;
+  border-radius: 6px;
   margin: 2%;
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 15px;
 `;
 
 const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
+  height: 200px;
+  margin-bottom: 10px;
 `;
 
 const Image = styled.img`
-  max-width: 95%;
-  height: 200px;
+  max-width: 100%;
+  object-fit: scale-down;
 `;
 
 const ProductInfo = styled.div`
@@ -77,6 +81,10 @@ const ProductName = styled.div`
   overflow: hidden;
 `;
 
+const ProductPrice = styled.div`
+  text-align: center;
+`;
+
 const CartController = styled.div`
   display: flex;
   flex-align: row;
@@ -84,7 +92,11 @@ const CartController = styled.div`
 `;
 
 const Quantity = styled.input`
-  width: 25px;
+  width: 40px;
+  background: white;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
 `;
 
 const AddToCart = styled.input`
@@ -103,7 +115,7 @@ const AddToCart = styled.input`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-
+  margin-top: auto;
   &:focus,
   &:hover,
   &:visited,

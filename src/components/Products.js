@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import ProductCard from './ProductCard';
 import useFetch from './useFetch';
 import styled from 'styled-components';
-import Categories from './Categories';
 
 const Loading = () => <p>Loading...</p>;
 
@@ -31,7 +30,6 @@ const Products = () => {
       {error && <Error error={error} />}
       {data.length && (
         <Fragment>
-          <Categories />
           <Display>
             <Data products={data} />
           </Display>
@@ -44,7 +42,11 @@ const Products = () => {
 export default Products;
 
 const Display = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap: 32px;
+  row-gap: 16px;
+  grid-auto-columns: auto;
+  margin: 0px 16px 0px 16px;
+  margin-top: 70px;
 `;
