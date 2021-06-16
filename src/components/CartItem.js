@@ -3,6 +3,7 @@ import { CartContext } from './CartContext';
 import styled from 'styled-components';
 import { formatter } from './AppLogic';
 import { Link } from 'react-router-dom';
+import deleteIcon from '../assets/delete.svg';
 
 const CartItem = (props) => {
   const { dispatch } = useContext(CartContext);
@@ -27,18 +28,18 @@ const CartItem = (props) => {
 
   return (
     <CartCard>
-      <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
-        <CartImage src={props.image} alt='changeme' />
-      </StyledLink>
+      <CartImage src={props.image} alt='changeme' />
       <div className='cart-item-name'>
-        <p>{props.name}</p>
+        <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
+          <p>{props.name}</p>
+        </StyledLink>
       </div>
       <div className='cart-item-price'>
         <p>{formatter.format(price)}</p>
       </div>
 
       <QuantityController>
-        <QuantityButton
+        <QuantityButtonDecrement
           onClick={() => {
             dispatch({
               type: 'decrement',
@@ -55,9 +56,9 @@ const CartItem = (props) => {
           }}
         >
           -
-        </QuantityButton>
+        </QuantityButtonDecrement>
         <Quantity type='number' min='1' value={quantity} ref={itemRef} onChange={handleChange} />
-        <QuantityButton
+        <QuantityButtonIncrement
           onClick={() => {
             dispatch({
               type: 'increment',
@@ -74,8 +75,8 @@ const CartItem = (props) => {
           }}
         >
           +
-        </QuantityButton>
-        <button
+        </QuantityButtonIncrement>
+        <DeleteButton
           onClick={() => {
             dispatch({
               type: 'delete',
@@ -86,8 +87,8 @@ const CartItem = (props) => {
             });
           }}
         >
-          delete
-        </button>
+          <img src={deleteIcon} alt='delete' />
+        </DeleteButton>
       </QuantityController>
       <div>
         <p>{formatter.format(quantity * price)}</p>
@@ -115,19 +116,42 @@ const QuantityController = styled.div`
   flex-direction: row;
 `;
 
-const QuantityButton = styled.div`
-  height: 50%;
+const QuantityButtonDecrement = styled.div`
+  height: 30px;
   background: white;
-  border-radius: 3px;
+  border-radius: 9px 0px 0px 9px;
   border: 2px solid palevioletred;
   color: palevioletred;
-  margin: 0 1em;
-  padding: 0.25em 1em;
+  ${'' /* padding: 0.25em 1em; */}
+  width: 30px;
 `;
 
 const Quantity = styled.input`
+  height: 30px;
   width: 40px;
+  background: white;
+  border: 2px solid palevioletred;
+  border-right: 0px;
+  border-left: 0px;
+  color: palevioletred;
+  display: inline-block;
+  &:focus {
+    outline: none;
+  }
+  padding: 0px;
 `;
+
+const QuantityButtonIncrement = styled.div`
+  height: 30px;
+  width: 30px;
+  background: white;
+  border-radius: 0px 9px 9px 0px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  ${'' /* padding: 0.25em 1em; */}
+`;
+
+const DeleteButton = styled.div``;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
