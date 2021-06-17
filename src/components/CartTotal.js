@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { formatter } from './AppLogic';
 import { CartContext } from './CartContext';
 
@@ -7,10 +8,14 @@ const CartTotal = (props) => {
   const { itemCount, costCount } = state;
 
   return (
-    <p>
+    <Total>
       TOTAL BEFORE SHIPPING: {itemCount} items ({formatter.format(costCount)})
-    </p>
+    </Total>
   );
 };
 
 export default CartTotal;
+
+const Total = styled.p`
+  font-weight: bold;
+`;
