@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import ProductCard from './ProductCard';
 import useFetch from './useFetch';
 import styled from 'styled-components';
 import { Loading, Error, Data } from './ProductFetchMap';
