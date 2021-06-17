@@ -11,11 +11,9 @@ const Products = () => {
       {loading && <Loading />}
       {error && <Error error={error} />}
       {data.length && (
-        <Fragment>
-          <Display>
-            <Data products={data} />
-          </Display>
-        </Fragment>
+        <Display>
+          <Data products={data} />
+        </Display>
       )}
     </Fragment>
   );
