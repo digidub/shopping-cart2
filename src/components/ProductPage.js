@@ -66,17 +66,6 @@ const ProductDisplay = styled.div`
   @media (max-width: 700px) {
     margin: 70px 16px 0px 16px;
   }
-  ${
-    '' /* max-width: 769px;
-  margin: 0 auto;
-  margin-top: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @media (max-width: 350px) {
-    width: 100%;
-  } */
-  }
 `;
 
 const ImageHolder = styled.div`
@@ -86,7 +75,7 @@ const ImageHolder = styled.div`
 `;
 
 const Image = styled.img`
-  max-height: 100%;
+  max-height: 50vh;
   object-fit: scale-down;
 `;
 
