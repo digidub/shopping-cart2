@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = () => {
+const useFetch = (props) => {
   const [state, setState] = useState({
     loading: true,
     error: false,
