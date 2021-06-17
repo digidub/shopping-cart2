@@ -2,18 +2,15 @@ import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
 import cartIcon from '../assets/cart.svg';
 import styled from 'styled-components';
-import { formatter } from './AppLogic';
 
 const CartNavDisplay = () => {
   const { state } = useContext(CartContext);
-  const { itemCount, costCount } = state;
+  const { itemCount } = state;
 
   return (
     <CartDisplay>
       <img src={cartIcon} alt='cart' />
-      <p>
-        {itemCount} items {itemCount ? formatter.format(costCount) : ''}
-      </p>
+      {itemCount ? '(' + itemCount + ')' : ''}
     </CartDisplay>
   );
 };
