@@ -29,70 +29,71 @@ const CartItem = (props) => {
   return (
     <CartCard>
       <CartImage src={props.image} alt='changeme' />
-      <div className='cart-item-name'>
+      <CartCell>
         <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
           <p>{props.name}</p>
         </StyledLink>
-      </div>
-      <div className='cart-item-price'>
+      </CartCell>
+      <CartCell>
         <p>{formatter.format(price)}</p>
-      </div>
-
-      <QuantityController>
-        <QuantityButtonDecrement
-          onClick={() => {
-            dispatch({
-              type: 'decrement',
-              quantity: 1,
-              cost: parseFloat(props.price),
-              item: {
-                id,
-                name,
-                image,
-                price,
+      </CartCell>
+      <CartCell>
+        <Buttons>
+          <QuantityButtonDecrement
+            onClick={() => {
+              dispatch({
+                type: 'decrement',
                 quantity: 1,
-              },
-            });
-          }}
-        >
-          -
-        </QuantityButtonDecrement>
-        <Quantity type='number' min='1' value={quantity} ref={itemRef} onChange={handleChange} />
-        <QuantityButtonIncrement
-          onClick={() => {
-            dispatch({
-              type: 'increment',
-              quantity: 1,
-              cost: parseFloat(price),
-              item: {
-                id,
-                name,
-                image,
-                price,
+                cost: parseFloat(props.price),
+                item: {
+                  id,
+                  name,
+                  image,
+                  price,
+                  quantity: 1,
+                },
+              });
+            }}
+          >
+            -
+          </QuantityButtonDecrement>
+          <Quantity type='number' min='1' value={quantity} ref={itemRef} onChange={handleChange} />
+          <QuantityButtonIncrement
+            onClick={() => {
+              dispatch({
+                type: 'increment',
                 quantity: 1,
-              },
-            });
-          }}
-        >
-          +
-        </QuantityButtonIncrement>
-        <DeleteButton
-          onClick={() => {
-            dispatch({
-              type: 'delete',
-              cost: parseFloat(price),
-              item: {
-                id,
-              },
-            });
-          }}
-        >
-          <img src={deleteIcon} alt='delete' />
-        </DeleteButton>
-      </QuantityController>
-      <div>
+                cost: parseFloat(price),
+                item: {
+                  id,
+                  name,
+                  image,
+                  price,
+                  quantity: 1,
+                },
+              });
+            }}
+          >
+            +
+          </QuantityButtonIncrement>
+          <DeleteButton
+            onClick={() => {
+              dispatch({
+                type: 'delete',
+                cost: parseFloat(price),
+                item: {
+                  id,
+                },
+              });
+            }}
+          >
+            <img src={deleteIcon} alt='delete' />
+          </DeleteButton>
+        </Buttons>
+      </CartCell>
+      <CartCell>
         <p>{formatter.format(quantity * price)}</p>
-      </div>
+      </CartCell>
     </CartCard>
   );
 };
@@ -101,9 +102,9 @@ export default CartItem;
 
 const CartCard = styled.div`
   display: grid;
-  grid-template-columns: 10% 30% 10% 35% 10%;
-  height: 10vh;
-  margin: 1vh 0 1vh 0;
+  grid-template-columns: 15% 48% 10% 18% 10%;
+  height: 100px;
+  margin: 10px 0 10px 0;
 `;
 
 const CartImage = styled.img`
@@ -111,9 +112,10 @@ const CartImage = styled.img`
   overflow: hidden;
 `;
 
-const QuantityController = styled.div`
+const CartCell = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const QuantityButtonDecrement = styled.div`
@@ -163,4 +165,10 @@ const StyledLink = styled(Link)`
   &:active {
     text-decoration: none;
   }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
