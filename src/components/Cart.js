@@ -39,15 +39,14 @@ const Cart = () => {
 export default Cart;
 
 const CartDisplay = styled.div`
-  width: 80vh;
+  width: 768px;
   height: 60vh;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  background-color: lightgrey;
 `;
 
 const NoItems = styled.div`
