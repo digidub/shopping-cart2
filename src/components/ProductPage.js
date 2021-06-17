@@ -12,57 +12,82 @@ const ProductPage = () => {
   const itemRef = useRef();
 
   return (
-    <Fragment>
-      <ProductDisplay>
-        <div className='image'>
-          <img src={image} alt={altText} />
+    <ProductDisplay>
+      <ImageHolder>
+        <Image src={image} alt={altText} />
+      </ImageHolder>
+      <div className='product-details'>
+        <div className='product-title'>
+          <h1>{name}</h1>
         </div>
-        <div className='product-details'>
-          <div className='product-title'>
-            <h1>{name}</h1>
-          </div>
-          <div className='product-description'>
-            <h3>{description}</h3>
-          </div>
-          <div className='product-price'>
-            <h1>£{price}</h1>
-          </div>
-          <CartController>
-            <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
-            <AddToCart
-              type='submit'
-              value='Add to Cart'
-              onClick={() => {
-                dispatch({
-                  type: 'increment',
+        <div className='product-description'>
+          <h3>{description}</h3>
+        </div>
+        <div className='product-price'>
+          <h1>£{price}</h1>
+        </div>
+        <CartController>
+          <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
+          <AddToCart
+            type='submit'
+            value='Add to Cart'
+            onClick={() => {
+              dispatch({
+                type: 'increment',
+                quantity: parseInt(itemRef.current.value),
+                cost: parseFloat(price),
+                item: {
+                  id,
+                  name,
+                  description,
+                  image,
+                  price,
                   quantity: parseInt(itemRef.current.value),
-                  cost: parseFloat(price),
-                  item: {
-                    id,
-                    name,
-                    description,
-                    image,
-                    price,
-                    quantity: parseInt(itemRef.current.value),
-                  },
-                });
-              }}
-            />
-          </CartController>
-        </div>
-      </ProductDisplay>
-    </Fragment>
+                },
+              });
+            }}
+          />
+        </CartController>
+      </div>
+    </ProductDisplay>
   );
 };
 
 export default ProductPage;
 
 const ProductDisplay = styled.div`
-  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap: 32px;
+  row-gap: 16px;
+  grid-auto-columns: auto;
+  margin: 0px 200px 0px 200px;
+  margin-top: 70px;
+  @media (max-width: 700px) {
+    margin: 70px 16px 0px 16px;
+  }
+  ${
+    '' /* max-width: 769px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 70px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
+  @media (max-width: 350px) {
+    width: 100%;
+  } */
+  }
+`;
+
+const ImageHolder = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Image = styled.img`
+  max-height: 100%;
+  object-fit: scale-down;
 `;
 
 const CartController = styled.div`
