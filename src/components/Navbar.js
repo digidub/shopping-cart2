@@ -8,13 +8,35 @@ const Navbar = () => {
     <NavBar>
       <NavLinks>
         <li>
-          <StyledLink to='/'>Home</StyledLink>
+          <StyledLink
+            exact
+            to='/'
+            activeStyle={{
+              color: 'palevioletred',
+            }}
+          >
+            Home
+          </StyledLink>
         </li>
         <li>
-          <StyledLink to='/products'>Products</StyledLink>
+          <StyledLink
+            exact
+            to='/products'
+            activeStyle={{
+              color: 'palevioletred',
+            }}
+          >
+            Products
+          </StyledLink>
         </li>
         <li>
-          <StyledLink to='/cart'>
+          <StyledLink
+            exact
+            to='/cart'
+            activeStyle={{
+              color: 'palevioletred',
+            }}
+          >
             <CartNavDisplay />
           </StyledLink>
         </li>
