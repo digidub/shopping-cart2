@@ -25,13 +25,15 @@ const Cart = () => {
   return (
     <CartDisplay>
       {cartItems.length ? (
-        cartItems
+        <div>
+          {cartItems}
+          <CartTotal />
+        </div>
       ) : (
         <NoItems>
           No Items In Cart! Add <Link to='/products'>products</Link> to proceed.
         </NoItems>
       )}
-      <CartTotal />
     </CartDisplay>
   );
 };
