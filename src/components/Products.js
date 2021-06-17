@@ -2,24 +2,7 @@ import React, { Fragment } from 'react';
 import ProductCard from './ProductCard';
 import useFetch from './useFetch';
 import styled from 'styled-components';
-
-const Loading = () => <p>Loading...</p>;
-
-const Error = (error) => <p>Oops! Something went wrong: {error}</p>;
-
-const Data = ({ products }) =>
-  products.map((product) => {
-    return (
-      <ProductCard
-        key={product.id}
-        id={product.id}
-        image={product.image}
-        name={product.title}
-        price={product.price}
-        description={product.description}
-      ></ProductCard>
-    );
-  });
+import { Loading, Error, Data } from './ProductFetchMap';
 
 const Products = () => {
   const { loading, error, data } = useFetch();
