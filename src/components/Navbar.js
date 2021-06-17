@@ -60,6 +60,7 @@ const NavBar = styled.div`
 
 const NavLinks = styled.ul`
   width: 800px;
+  max-width: 800px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -67,6 +68,7 @@ const NavLinks = styled.ul`
   max-width: 600px;
   margin: 0 auto;
   list-style-type: none;
+  padding: 0px;
   @media (max-width: 700px) {
     max-width: 300px;
   }
