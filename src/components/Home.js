@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import useFetch from './useFetch';
 import { Loading, Error, Data } from './ProductFetchMap';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const limit = '4';
@@ -9,8 +10,9 @@ const Home = () => {
 
   return (
     <HomePage>
-      <h1>General Store</h1>
-      <h2>Shop our latest products:</h2>
+      <StyledLink to='/products'>
+        <Heading>SHOP LATEST SEASON</Heading>
+      </StyledLink>
       {loading && <Loading />}
       {error && <Error error={error} />}
       {data.length && (
@@ -37,5 +39,24 @@ const Display = styled.div`
   row-gap: 16px;
   grid-auto-columns: auto;
   margin: 0px 16px 0px 16px;
-  margin-top: 20px;
+  margin-top: 10px;
+`;
+
+const Heading = styled.h1`
+  font-size: 3em;
+  margin: 10px;
+  margin-left: 19px;
+  color: black;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
