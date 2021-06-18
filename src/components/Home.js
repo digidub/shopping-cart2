@@ -13,6 +13,7 @@ const Home = () => {
       <StyledLink to='/products'>
         <Heading>SHOP LATEST SEASON</Heading>
       </StyledLink>
+      <Featured>Featured Products:</Featured>
       {loading && <Loading />}
       {error && <Error error={error} />}
       {data.length && (
@@ -30,6 +31,10 @@ const HomePage = styled.div`
   margin: 0 auto;
   margin-top: 70px;
   max-width: 768px;
+`;
+
+const Featured = styled.p`
+  text-align: center;
 `;
 
 const Display = styled.div`
