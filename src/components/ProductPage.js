@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useLocation, useParams } from 'react-router';
 import styled from 'styled-components';
 import { CartContext } from './CartContext';
@@ -23,31 +23,33 @@ const ProductPage = () => {
         <div className='product-description'>
           <h3>{description}</h3>
         </div>
-        <div className='product-price'>
-          <h1>£{price}</h1>
-        </div>
-        <CartController>
-          <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
-          <AddToCart
-            type='submit'
-            value='Add to Cart'
-            onClick={() => {
-              dispatch({
-                type: 'increment',
-                quantity: parseInt(itemRef.current.value),
-                cost: parseFloat(price),
-                item: {
-                  id,
-                  name,
-                  description,
-                  image,
-                  price,
+        <PriceAndCart>
+          <div className='product-price'>
+            <Price>£{price}</Price>
+          </div>
+          <CartController>
+            <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
+            <AddToCart
+              type='submit'
+              value='Add to Cart'
+              onClick={() => {
+                dispatch({
+                  type: 'increment',
                   quantity: parseInt(itemRef.current.value),
-                },
-              });
-            }}
-          />
-        </CartController>
+                  cost: parseFloat(price),
+                  item: {
+                    id,
+                    name,
+                    description,
+                    image,
+                    price,
+                    quantity: parseInt(itemRef.current.value),
+                  },
+                });
+              }}
+            />
+          </CartController>
+        </PriceAndCart>
       </div>
     </ProductDisplay>
   );
@@ -110,4 +112,15 @@ const AddToCart = styled.input`
     color: white;
     transition: all 0.5s ease;
   }
+`;
+
+const PriceAndCart = styled.div`
+  display: flex;
+  flex-align: row;
+  justify-content: space-around;
+  margin-bottom: 15px;
+`;
+
+const Price = styled.h1`
+  margin: 0px;
 `;
