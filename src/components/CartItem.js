@@ -146,7 +146,7 @@ const CartQuantity = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   grid-area: quantity;
 `;
 
@@ -195,4 +195,5 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 `;
