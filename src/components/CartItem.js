@@ -29,15 +29,15 @@ const CartItem = (props) => {
   return (
     <CartCard>
       <CartImage src={props.image} alt='changeme' />
-      <CartCell>
+      <CartName>
         <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
           <p>{props.name}</p>
         </StyledLink>
-      </CartCell>
-      <CartCell>
+      </CartName>
+      <CartPrice>
         <p>{formatter.format(price)}</p>
-      </CartCell>
-      <CartCell>
+      </CartPrice>
+      <CartQuantity>
         <Buttons>
           <QuantityButtonDecrement
             onClick={() => {
@@ -90,10 +90,10 @@ const CartItem = (props) => {
             <img src={deleteIcon} alt='delete' />
           </DeleteButton>
         </Buttons>
-      </CartCell>
-      <CartCell>
+      </CartQuantity>
+      <CartCost>
         <p>{formatter.format(quantity * price)}</p>
-      </CartCell>
+      </CartCost>
     </CartCard>
   );
 };
@@ -105,17 +105,57 @@ const CartCard = styled.div`
   grid-template-columns: 15% 48% 10% 18% 10%;
   height: 100px;
   margin: 10px 0 10px 0;
+  grid-template-areas:
+      'image name quantity cost'
+      'image price quantity cost';
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: 15% 35% 14% 22% 14%;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+      'image name quantity cost'
+      'image price quantity cost';
+  }
 `;
 
 const CartImage = styled.img`
   max-height: 100%;
   overflow: hidden;
+  grid-area: 'image';
 `;
 
-const CartCell = styled.div`
+const CartName = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  grid-area: 'name';
+`;
+
+const CartPrice = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: 'price';
+`;
+
+const CartQuantity = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: 'quantity';
+`;
+
+const CartCost = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (width: 600px) {
+    grid-area: 'cost';
+  }
 `;
 
 const QuantityButtonDecrement = styled.div`
