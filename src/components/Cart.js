@@ -41,7 +41,7 @@ const Cart = () => {
 export default Cart;
 
 const CartDisplay = styled.div`
-  width: 768px;
+  max-width: 768px;
   height: 60vh;
   margin: 0 auto;
   margin-top: 70px;
