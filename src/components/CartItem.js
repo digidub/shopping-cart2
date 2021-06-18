@@ -160,23 +160,11 @@ const CartCost = styled.div`
   }
 `;
 
-const QuantityButtonDecrement = styled.div`
-  height: 30px;
-  background: white;
-  border-radius: 9px 0px 0px 9px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  ${'' /* padding: 0.25em 1em; */}
-  width: 30px;
-`;
+const QuantityButtonDecrement = styled.div``;
 
 const Quantity = styled.input`
-  height: 30px;
-  width: 40px;
-  background: white;
-  border: 2px solid palevioletred;
-  border-right: 0px;
-  border-left: 0px;
+  max-width: 35px;
+  text-align: center;
   color: palevioletred;
   display: inline-block;
   &:focus {
@@ -186,13 +174,7 @@ const Quantity = styled.input`
 `;
 
 const QuantityButtonIncrement = styled.div`
-  height: 30px;
-  width: 30px;
-  background: white;
-  border-radius: 0px 9px 9px 0px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  ${'' /* padding: 0.25em 1em; */}
+  max-width: 30px;
 `;
 
 const DeleteButton = styled.div``;
