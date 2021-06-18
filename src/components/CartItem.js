@@ -114,10 +114,10 @@ const CartCard = styled.div`
     grid-template-columns: 15% 35% 14% 22% 14%;
   }
   @media (max-width: 600px) {
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 25% 17% 33% 25%;
     grid-template-rows: 50% 50%;
     grid-template-areas:
-      'image name quantity cost'
+      'image name name name'
       'image price quantity cost';
   }
 `;
@@ -125,36 +125,38 @@ const CartCard = styled.div`
 const CartImage = styled.img`
   max-height: 100%;
   overflow: hidden;
-  grid-area: 'image';
+  grid-area: image;
 `;
 
 const CartName = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-area: 'name';
+  grid-area: name;
 `;
 
 const CartPrice = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-area: 'price';
+  grid-area: price;
 `;
 
 const CartQuantity = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-area: 'quantity';
+  align-items: center;
+  grid-area: quantity;
 `;
 
 const CartCost = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   @media (width: 600px) {
-    grid-area: 'cost';
+    grid-area: cost;
   }
 `;
 
