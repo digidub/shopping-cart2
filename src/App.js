@@ -75,7 +75,7 @@ function App() {
         <CartContext.Provider value={{ state, dispatch }}>
           <Navbar />
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/shopping-cart2/'>
               <Home />
             </Route>
             <Route exact path='/products'>
