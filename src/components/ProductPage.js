@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react';
 import { useLocation, useParams } from 'react-router';
 import styled from 'styled-components';
 import { CartContext } from './CartContext';
+import { formatter } from './AppLogic';
 
 const ProductPage = () => {
   let { id } = useParams();
@@ -25,7 +26,7 @@ const ProductPage = () => {
         </div>
         <PriceAndCart>
           <div className='product-price'>
-            <Price>£{price}</Price>
+            <Price>{formatter.format(price)}</Price>
           </div>
           <CartController>
             <Quantity type='number' min='1' defaultValue={1} ref={itemRef} />
