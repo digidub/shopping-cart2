@@ -51,6 +51,7 @@ const NavBar = styled.div`
   background-color: #1a1919;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 50px;
   display: flex;
