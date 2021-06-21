@@ -51,7 +51,7 @@ const Heading = styled.h1`
   font-size: 3em;
   margin: 10px;
   margin-left: 19px;
-  color: black;
+  color: #1a1919;
 `;
 
 const StyledLink = styled(Link)`
