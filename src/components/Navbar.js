@@ -48,7 +48,7 @@ const Navbar = () => {
 export default Navbar;
 
 const NavBar = styled.div`
-  background-color: #353434;
+  background-color: #1a1919;
   position: fixed;
   top: 0;
   width: 100%;
