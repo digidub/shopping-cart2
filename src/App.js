@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import ProductPage from './components/ProductPage';
 import Products from './components/Products';
 import GlobalStyle from './components/GlobalStyles';
+import ScrollToTop from './components/ScrollToTop';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -72,6 +73,7 @@ function App() {
     <Fragment>
       <GlobalStyle />
       <BrowserRouter>
+        <ScrollToTop />
         <CartContext.Provider value={{ state, dispatch }}>
           <Navbar />
           <Switch>
