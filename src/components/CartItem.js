@@ -169,9 +169,7 @@ const CartCost = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (width: 600px) {
-    grid-area: cost;
-  }
+  grid-area: cost;
 `;
 
 const QuantityButtonDecrement = styled.div`
