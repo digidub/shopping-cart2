@@ -28,7 +28,9 @@ const CartItem = (props) => {
 
   return (
     <CartCard>
-      <CartImage src={props.image} alt='changeme' />
+      <CartImageHolder>
+        <CartImage src={props.image} alt='changeme' />
+      </CartImageHolder>
       <CartName>
         <StyledLink to={{ pathname: `/products/${id}`, state: { props } }}>
           <p>{props.name}</p>
@@ -118,8 +120,16 @@ const CartCard = styled.div`
   }
 `;
 
+const CartImageHolder = styled.div`
+  display: flex;
+  height: 100px;
+  flex-diretion: column;
+  justify-content: center;
+`;
+
 const CartImage = styled.img`
   max-height: 100%;
+  max-width: 95%;
   overflow: hidden;
   @media (max-width: 600px) {
     grid-area: image;
@@ -164,24 +174,43 @@ const CartCost = styled.div`
   }
 `;
 
-const QuantityButtonDecrement = styled.div``;
+const QuantityButtonDecrement = styled.div`
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s ease;
+    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
+  }
+`;
 
 const Quantity = styled.input`
   max-width: 35px;
   text-align: center;
-  color: palevioletred;
-  display: inline-block;
+  padding: 0px;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
-  padding: 0px;
+  &:hover {
+    transition: all 0.2s ease;
+    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
+  }
 `;
 
 const QuantityButtonIncrement = styled.div`
-  max-width: 30px;
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s ease;
+    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
+  }
 `;
 
-const DeleteButton = styled.div``;
+const DeleteButton = styled.div`
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s ease;
+    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
+  }
+`;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
