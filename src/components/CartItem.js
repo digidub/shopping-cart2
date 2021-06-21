@@ -169,14 +169,20 @@ const CartCost = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  grid-area: cost;
+  @media (max-width: 600px) {
+    grid-area: cost;
+  }
 `;
 
 const QuantityButtonDecrement = styled.div`
+  border: 1px solid palevioletred;
+  background: white;
+  color: palevioletred;
+  padding: 0px 7px;
   cursor: pointer;
+  text-align: center;
   &:hover {
     transition: all 0.2s ease;
-    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
   }
 `;
 
@@ -190,15 +196,21 @@ const Quantity = styled.input`
   }
   &:hover {
     transition: all 0.2s ease;
-    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
   }
 `;
 
 const QuantityButtonIncrement = styled.div`
+  border: 1px solid palevioletred;
+  background: white;
+  color: palevioletred;
+  padding: 0px 7px;
   cursor: pointer;
+  text-align: center;
   &:hover {
     transition: all 0.2s ease;
-    filter: invert(76%) sepia(76%) saturate(2224%) hue-rotate(295deg) brightness(87%) contrast(98%);
+    border: none;
+    background: palevioletred;
+    color: white;
   }
 `;
 
