@@ -105,10 +105,6 @@ const CartCard = styled.div`
   grid-template-columns: 15% 48% 10% 18% 10%;
   height: 100px;
   margin: 10px 0 10px 0;
-  grid-template-areas:
-      'image name quantity cost'
-      'image price quantity cost';
-  }
 
   @media (max-width: 700px) {
     grid-template-columns: 15% 35% 14% 22% 14%;
@@ -125,21 +121,27 @@ const CartCard = styled.div`
 const CartImage = styled.img`
   max-height: 100%;
   overflow: hidden;
-  grid-area: image;
+  @media (max-width: 600px) {
+    grid-area: image;
+  }
 `;
 
 const CartName = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-area: name;
+  @media (max-width: 600px) {
+    grid-area: name;
+  }
 `;
 
 const CartPrice = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-area: price;
+  @media (max-width: 600px) {
+    grid-area: price;
+  }
 `;
 
 const CartQuantity = styled.div`
@@ -147,7 +149,9 @@ const CartQuantity = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  grid-area: quantity;
+  @media (max-width: 600px) {
+    grid-area: quantity;
+  }
 `;
 
 const CartCost = styled.div`
