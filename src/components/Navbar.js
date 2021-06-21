@@ -10,7 +10,7 @@ const Navbar = () => {
         <li>
           <StyledLink
             exact
-            to='/'
+            to='/shopping-cart2/'
             activeStyle={{
               color: 'palevioletred',
             }}
