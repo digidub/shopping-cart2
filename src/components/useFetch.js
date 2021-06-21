@@ -6,7 +6,6 @@ const useFetch = (props) => {
     error: false,
     data: [],
   });
-  console.log(props);
 
   let limit = '';
   props?.length > 0 ? (limit = props) : (limit = '');
