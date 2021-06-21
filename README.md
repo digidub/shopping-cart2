@@ -4,7 +4,7 @@ A shopping cart project built using React's functional components, and using pro
 
 ## Project Link
 
-> > > URL HERE
+[View the project here](https://digidub.github.io/shopping-cart2/)
 
 ## Concepts Employed
 
