@@ -39,7 +39,7 @@ const ProductPage = () => {
                   quantity: parseInt(itemRef.current.value),
                   cost: parseFloat(price),
                   item: {
-                    id,
+                    id: parseInt(id),
                     name,
                     description,
                     image,
