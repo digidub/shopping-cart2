@@ -5,7 +5,7 @@ export const checkIfItemInCart = (item, array, sum) => {
       i === index
         ? {
             ...item,
-            quantity: item.quantity + (sum === 'add' ? item.quantity : -item.quantity),
+            quantity: item.quantity + (sum === 'add' ? item.quantity : -1),
           }
         : item
     );
