@@ -19,8 +19,8 @@ In building this project I leveraged the following concepts and technologies:
   - useEffect - this hook was used to trigger functionality based on the lifecycle of components, specifically the custom hook below in this instance.
   - custom hook - useFetch - I created this custom hook to handle API calls and data fetching from the product list API, and used it to trigger conditional component rendering.
 - **Utility functions**
-  - I built several utility functions that were employed by my useReducer Hook in order to shallow-copy state and ensure it was not mutated
+  - I built several utility functions that were employed by my useReducer Hook in order to shallow-copy state and ensure it was not mutated.
 - **Styled components**
-  - The styled components library was used to couple component logic and styling together for ease of editing
+  - The styled components library was used to couple component logic and styling together for ease of editing.
 - **CSS Grid, FlexBox and Media Queries**
-  - I employed these CSS features to build a responsive website that views well on all screen sizes
+  - I employed these CSS features to build a responsive website that views well on all screen sizes.
