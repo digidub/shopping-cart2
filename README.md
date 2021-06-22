@@ -6,7 +6,10 @@ A responsive shopping cart project built using React's functional components, an
 
 [View the project here](https://digidub.github.io/shopping-cart2/)
 
+![Cart Demo](https://i.imgur.com/Rzty59W.gif 'Cart Demo')
+
 ![Products Screenshot](https://i.imgur.com/t8jepxb.png 'Products Page')
+
 ![Products Screenshot](https://i.imgur.com/0U9kZIG.png 'Cart Page')
 
 ## Skills Employed
