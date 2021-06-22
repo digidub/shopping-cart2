@@ -1,20 +1,20 @@
-export const checkIfItemInCart = (item, array, sum) => {
-  const index = array.findIndex((object) => object.id === item.id);
+export const checkIfItemInCart = (newItem, array, sum) => {
+  const index = array.findIndex((object) => object.id === newItem.id);
   if (index !== -1) {
     const newArray = array.map((item, i) =>
       i === index
         ? {
             ...item,
-            quantity: item.quantity + (sum === 'add' ? item.quantity : -1),
+            quantity: item.quantity + (sum === 'add' ? newItem.quantity : -1),
           }
         : item
     );
     if (!newArray[index].quantity) {
-      return deleteItemLookup(item, newArray);
+      return deleteItemLookup(newItem, newArray);
     }
     return newArray;
   }
-  return array.concat(item);
+  return array.concat(newItem);
 };
 
 export const deleteItemLookup = (item, array) => {
