@@ -11,8 +11,6 @@ import GlobalStyle from './components/GlobalStyles';
 import ScrollToTop from './components/ScrollToTop';
 
 const reducer = (state, action) => {
-  console.log(action);
-  console.log(state);
   switch (action.type) {
     case 'increment':
       const cartItemsIncrement = checkIfItemInCart(action.item, state.items, 'add');
